@@ -1,5 +1,8 @@
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class App {
     public static void ejemplo1() {
@@ -42,7 +45,7 @@ public class App {
 
         int[] numeros2 = { 34, 25, 46, 13, 65 };
 
-        for(int num: numeros2) {
+        for (int num : numeros2) {
             System.out.println(num);
         }
         System.out.println(Arrays.toString(numeros2));
@@ -61,10 +64,40 @@ public class App {
         System.out.println(Arrays.toString(palabras));
     }
 
+    /**
+     * Crea un array con 5 números. Recórrelo y suma los números.
+     * Muestra el total por pantalla
+     */
+    public static void ejercicioarrays() {
+        int[] numeros = new int[5];
+        Random r = new Random();
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = r.nextInt(100) + 1; // entre 1 y 100 (random)
+        }
+
+        int suma = 0;
+        for (int i = 0; i < numeros.length; i++) {
+            suma += numeros[i];
+        }
+
+        System.out.println(Arrays.toString(numeros));
+        System.out.println("Total: " + suma);
+
+        // NIVEL AVANZADO!!
+        // int[] numeros2 = IntStream
+        //         .generate(() -> new Random().nextInt(100) + 1)
+        //         .limit(5)
+        //         .toArray();
+        // int total = Arrays.stream(numeros2).sum();
+        // System.out.println(Arrays.toString(numeros2));
+        // System.out.println("Total: " + total);
+    }
+
     public static void main(String[] args) throws Exception {
         // ejemplo1();
         // ejemplo2();
         // ejemplo3();
-        ejemplo4();
+        // ejemplo4();
+        ejercicioarrays();
     }
 }
